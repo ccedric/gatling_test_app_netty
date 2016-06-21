@@ -42,4 +42,8 @@ class FastWorkload extends Simulation {
     scn.inject(
       atOnceUsers(config.getInt("frontline.benchmark.netty.users"))))
     .protocols(httpConf)
+    .assertions(
+      global.failedRequests.count.is(0)
+    )
+
 }
