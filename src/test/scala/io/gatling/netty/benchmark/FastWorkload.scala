@@ -19,7 +19,7 @@ class FastWorkload extends Simulation {
     .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0")
 
   val scn = scenario("scenario1")
-    .during(1 minute) {
+    .during(config.getInt("frontline.benchmark.netty.duration") seconds) {
       exec(
         http("hello")
           .get("/hello")

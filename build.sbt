@@ -2,7 +2,7 @@ enablePlugins(GatlingPlugin)
 
 scalaVersion := "2.11.8"
 
-val frontlineVersion = "2.2.0-SNAPSHOT"
+val frontlineVersion = "2.2.3-SNAPSHOT"
 
 scalacOptions := Seq(
   "-encoding", "UTF-8", "-target:jvm-1.8", "-deprecation",
@@ -14,9 +14,6 @@ libraryDependencies += "io.gatling.frontline" % "frontline-probe"        % front
 
 Project.inConfig(Test)(baseAssemblySettings)
 assemblyMergeStrategy in (Test, assembly) := {
-  //  case "META-INF/BCKEY.RSA" => MergeStrategy.discard
-  //  case "META-INF/BCKEY.SF" => MergeStrategy.discard
-  //  case x if x.startsWith("org.bouncycastle") => MergeStrategy.discard
   case "META-INF/io.netty.versions.properties" => MergeStrategy.discard
   case x => (assemblyMergeStrategy in assembly).value(x)
 }
