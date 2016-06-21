@@ -1,4 +1,4 @@
-package frontline
+package io.gatling.netty
 
 import scala.concurrent.duration.FiniteDuration
 

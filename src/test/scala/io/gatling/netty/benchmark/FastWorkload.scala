@@ -1,4 +1,4 @@
-package frontline.benchmarks
+package io.gatling.netty.benchmark
 
 import frontline.Configured
 import io.gatling.core.Predef._
