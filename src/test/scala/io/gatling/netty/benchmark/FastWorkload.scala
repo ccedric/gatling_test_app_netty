@@ -20,22 +20,25 @@ class FastWorkload extends Simulation {
 
   val scn = scenario("scenario1")
     .during(config.getInt("frontline.benchmark.netty.duration") seconds) {
-      exec(
-        http("hello")
-          .get("/hello")
-          .check(status.is(200)))
-        .exec(
+      group("hello"){
+        exec(
+          http("hello")
+            .get("/hello")
+            .check(status.is(200)))
+      }.group("json"){
+        exec(
           http("json1k")
             .get("/json1k")
             .check(status.is(200)))
-        .exec(
-          http("json10k")
-            .get("/json10k")
-            .check(status.is(200)))
-        .exec(
-          http("json100k")
-            .get("/json100k")
-            .check(status.is(200)))
+          .exec(
+            http("json10k")
+              .get("/json10k")
+              .check(status.is(200)))
+          .exec(
+            http("json100k")
+              .get("/json100k")
+              .check(status.is(200)))
+      }
     }
 
   setUp(
